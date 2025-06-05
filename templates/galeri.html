@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <!-- Gallery Grid -->
+  <div class="container mt-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="/static/images/nature.jpeg" class="card-img-top" alt="Nature">
+          <div class="card-body">
+            <h5 class="card-title">Nature Collection</h5>
+            <p class="card-text">Explore beautiful natural landscapes.</p>
+            <a href="#" class="btn btn-primary">View Gallery</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="/static/images/urban.jpeg" class="card-img-top" alt="City">
+          <div class="card-body">
+            <h5 class="card-title">Urban Views</h5>
+            <p class="card-text">Discover amazing cityscapes.</p>
+            <a href="#" class="btn btn-primary">View Gallery</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="/static/images/art gallery.webp" class="card-img-top" alt="Art">
+          <div class="card-body">
+            <h5 class="card-title">Art Gallery</h5>
+            <p class="card-text">Experience stunning artistic works.</p>
+            <a href="#" class="btn btn-primary">View Gallery</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+      
