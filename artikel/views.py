@@ -13,17 +13,70 @@ def in_operator(user):
     else:
         return True
 
+################ User biasa ####################
+@login_required(login_url='/auth-login')
 def artikel_list(request):
-    template_name ="artikel_list.html"
-    # Mengambil semua kategori
-    kategori = Kategori.objects.all()
-    # Mengambil semua artikel
-    artikel = ArtikelBlog.objects.all()
+    template_name ="dashboard/pengguna/artikel_list.html"
+    artikel = ArtikelBlog.objects.filter(created_by=request.user)
     context = {
-        "kategori": kategori,
         "artikel": artikel
     }
     return render(request, template_name, context)
+
+@login_required(login_url='/auth-login')
+def artikel_tambah(request):
+    template_name = "dashboard/admin/artikel_forms.html"
+    if request.method == "POST":
+        forms = ArtikelForms(request.POST, request.FILES)
+        if forms.is_valid():
+            pub = forms.save(commit=False)
+            pub.created_by = request.user
+            pub.save()
+            messages.success(request, 'berhasil tambah artikel')
+            return redirect("artikel_list")
+        
+    forms = ArtikelForms()      
+    context = {
+        "forms": forms,
+
+    }
+    return render(request, template_name, context)
+
+@login_required(login_url='/auth-login')
+def artikel_update(request, id_artikel):
+    template_name = "dashboard/admin/artikel_forms.html"
+    try:
+        artikel = ArtikelBlog.objects.get(id=id_artikel, created_by=request.user)
+    except:
+        messages.error(request, "halaman yang diminta tidak ditemukan")
+        return redirect("/dashboard")
+    
+    if request.method == "POST":
+        forms = ArtikelForms(request.POST, request.FILES, instance=artikel)
+        if forms.is_valid():
+            pub = forms.save(commit=False)
+            pub.created_by = request.user
+            pub.save()
+            messages.success(request, 'berhasil update artikel')
+            return redirect("artikel_list")
+    
+    forms = ArtikelForms(instance=artikel)      
+    context = {
+        "forms": forms,
+
+    }
+    return render(request, template_name, context)
+
+@login_required(login_url='/auth-login')
+def artikel_delete(request, id_artikel):
+    try:
+        ArtikelBlog.objects.get(id=id_artikel, created_by=request.user).delete()
+        messages.success(request, 'berhasil delete artikel')
+    except:
+        messages.error(request, 'gagal delete artikel')
+        pass
+    
+    return redirect("artikel_list")
 
 
 ################# admin #######################

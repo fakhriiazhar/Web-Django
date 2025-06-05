@@ -30,7 +30,8 @@
             {% for artikel in artikel %}
             <tr>
               <td class="text-sm font-weight-normal">{{ forloop.counter }}</td>
-              <td class="text-sm font-weight-normal">{{ artikel.judul }}</td>
+              <td class="text-sm font-weight-normal">
+                 {{ artikel.judul }} <br /> <span class="badge badge-primary"> created by: {{ artikel.created_by }}</span> </td>
               <td class="text-sm font-weight-normal">{{ artikel.kategori }}</td>
               <td class="text-sm font-weight-normal">{{ artikel.status }}</td>
               <td class="text-sm font-weight-normal text-center">
