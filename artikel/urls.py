@@ -17,6 +17,9 @@ from artikel.views import (
     admin_artikel_tambah,
     admin_artikel_update,
     admin_artikel_delete,
+
+    admin_management_user_list,
+
 )
 
 urlpatterns = [
@@ -36,7 +39,11 @@ urlpatterns = [
 
     path('operator/artikel/list', admin_artikel_list, name='admin_artikel_list'),
     path('operator/artikel/tambah', admin_artikel_tambah, name='admin_artikel_tambah'),
-     path('operator/artikel/update/<int:id_artikel>', admin_artikel_update, name='admin_artikel_update'),
+    path('operator/artikel/update/<int:id_artikel>', admin_artikel_update, name='admin_artikel_update'),
     path('operator/artikel/delete/<int:id_artikel>', admin_artikel_delete, name='admin_artikel_delete'),
-  
+   
+    path('operator/management-user/list/', admin_management_user_list, name='admin_management_user_list'),
+
+    
+
 ]

@@ -209,3 +209,15 @@ def admin_artikel_delete(request, id_artikel):
         pass
     
     return redirect("admin_artikel_list")
+
+
+###################### Management User oleh Operator ###############################
+@login_required(login_url='/auth-login')
+@user_passes_test(in_operator, login_url='/')
+def admin_management_user_list(request):
+    template_name = "dashboard/admin/user_list.html"
+    daftar_user = User.objects.all()
+    context = {
+        "daftar_user":daftar_user
+    }
+    return render(request, template_name, context)
