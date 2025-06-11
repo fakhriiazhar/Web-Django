@@ -32,8 +32,8 @@
             <tr>
               <td class="text-sm font-weight-normal">{{ forloop.counter }}</td>
               <td class="text-sm font-weight-normal">{{ user.username }}</td>
-              <td class="text-sm font-weight-normal">{{ user.first_name|default:"-" }} {{ user.last_name|default:"-" }}</td>
-              <td class="text-sm font-weight-normal">{{ user.is_staff }}</td>
+              <td class="text-sm font-weight-normal">{{ user.get_full_name }}</td>
+              <td class="text-sm font-weight-normal">{% if user.is_staff %}Staff{% else %}User{% endif %}</td>
               <td class="text-sm font-weight-normal text-center">
                 {% for group in user.groups.all %}
                   <span>{{ group.name }}</span>
@@ -42,7 +42,7 @@
                 {% endfor %}
               </td>
               <td class="text-sm font-weight-normal text-center">
-                <a class="btn btn-warning btn-sm" href="">edit</a>
+                <a class="btn btn-warning btn-sm" href="{% url 'admin_management_user_edit' user.id %}">edit</a>
                 <a class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin hapus?')" href="">delete</a>
               </td>
             </tr>

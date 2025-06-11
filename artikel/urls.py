@@ -1,4 +1,3 @@
-
 from django.urls import path
 from artikel.views import (
     artikel_list,
@@ -19,6 +18,7 @@ from artikel.views import (
     admin_artikel_delete,
 
     admin_management_user_list,
+    admin_management_user_edit,
 
 )
 
@@ -43,6 +43,7 @@ urlpatterns = [
     path('operator/artikel/delete/<int:id_artikel>', admin_artikel_delete, name='admin_artikel_delete'),
    
     path('operator/management-user/list/', admin_management_user_list, name='admin_management_user_list'),
+    path('operator/management-user/edit/<int:user_id>/', admin_management_user_edit, name='admin_management_user_edit'),
 
     
 
