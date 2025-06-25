@@ -26,6 +26,8 @@ urlpatterns = [
     path('auth-login', login, name='login'),
     path('auth-logout', logout, name='logout'),
     path('auth-registrasi', registrasi, name='registrasi'),
+
+    path('kategori/<int:kategori_id>/', artikel_by_kategori, name='artikel_by_kategori'),
 ]
 
 ################ Untuk Media ##########################

@@ -77,5 +77,16 @@ def artikel_list(request):
     }
     return render(request, template_name, context)
 
+def artikel_by_kategori(request, kategori_id):
+    template_name = "landingpage/index.html"
+    kategori = Kategori.objects.all()
+    artikel = ArtikelBlog.objects.filter(kategori_id=kategori_id)
+    context = {
+        "title": "Welcome to My Site",
+        "kategori": kategori,
+        "artikel": artikel,
+    }
+    return render(request, template_name, context)
+
 
 

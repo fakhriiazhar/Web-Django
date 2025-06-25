@@ -39,7 +39,7 @@
         <h4 class="mt-5">Kategori</h4>
 
         {% for k in kategori %}
-        <a href="javascript::">
+        <a href="{% url 'artikel_by_kategori' k.id %}">
           <div class="card justify-content-center mb-3">
             <div class="card-body p-3">
               <h6 class="mb-0">{{ k.nama }}</h6>
