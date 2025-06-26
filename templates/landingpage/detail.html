@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-lg-8 ms-auto me-auto">
             <h6 class="opacity-7 text-uppercase font-weight-bolder text-sm">{{ artikel.kategori }}</h6>
-            <img src="{{ artikel.gambar.url }}" alt="">
+            <img src="{{ artikel.gambar.url }}" alt="{{ artikel.judul }}" class="img-fluid rounded mx-auto d-block mb-4" style="max-width:800px; display:block; margin:auto;">
             <h3 class="title mb-4">{{ artikel.judul }}</h3>
             <p class="text-dark">{{ artikel.konten|safe}}</p>
             <p class="text-dark" style="font-style: italic;">{{ artikel.created_at}}</p>
