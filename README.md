@@ -1,3 +1,1 @@
-## Ckeditor
-![Uploading image.png…]()
 
